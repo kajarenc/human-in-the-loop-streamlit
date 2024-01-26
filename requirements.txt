@@ -1,0 +1,6 @@
+streamlit-nightly
+langchain
+langchain_openai
+tavily-python
+langgraph
+python-dotenv
