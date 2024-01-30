@@ -52,7 +52,7 @@ with left:
                 with chat_container.chat_message("human"):
                     st.write(message.content)
             elif isinstance(message, FunctionMessage):
-                with chat_container.chat_message("assistant", avatar="🧞‍♂️"):
+                with chat_container.chat_message("assistant", avatar="🦾"):
                     st.write(str(message)[:500])
             elif isinstance(message, AIMessage):
                 with chat_container.chat_message("assistant", avatar="🤖"):
