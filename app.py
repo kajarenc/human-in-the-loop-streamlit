@@ -15,9 +15,6 @@ if "langgraph_state" not in st.session_state:
         "user_approve_context": "",
     }
 
-print("AAAAAA MAMA JAN, RERUN REQUSTED!")
-print(st.session_state)
-
 with left:
     if not st.session_state["langgraph_state"]["user_approve_requested"]:
         chat_container = st.container(height=625)
@@ -25,7 +22,6 @@ with left:
         prompt = st.chat_input("Say something")
 
         if prompt:
-            print(f"PROMPT NOT EMPTY!!!! {prompt}")
             st.session_state["langgraph_state"]["special_messages"].append(
                 HumanMessage(content=prompt)
             )
@@ -39,12 +35,7 @@ with left:
                 "user_approve_context": "",
             }
 
-            print("JUST INPUTZZ")
-            print(inputs)
-
             result = langgraph_app.invoke(inputs)
-            print("RESULT")
-            print(result)
             st.session_state["langgraph_state"] = result
 
         for message in st.session_state["langgraph_state"]["special_messages"]:
@@ -60,8 +51,6 @@ with left:
             else:
                 st.write("AAAAAAA")
                 st.write(message)
-        print("OOOOOOOOOOO")
-        print(st.session_state["langgraph_state"])
 
 with right:
     if st.session_state["langgraph_state"]["user_approve_requested"]:
@@ -79,11 +68,7 @@ if (
     and st.session_state["langgraph_state"]["user_answer"] == True
 ):
     real_input = st.session_state["langgraph_state"]
-    print("FOOTER INPUT")
-    print(real_input)
     new_result = langgraph_app.invoke(real_input)
-    print("FOOTER RESULT")
-    print(new_result)
     st.session_state["langgraph_state"] = new_result
     st.session_state["langgraph_state"]["user_approve_requested"] = False
     st.session_state["langgraph_state"]["user_answer"] = False
